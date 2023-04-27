@@ -13,8 +13,9 @@ const Navbar = () => {
           </a>
           <nav className="md:mr-auto md:ml-20 md:py-1   md:pl-4  text-black- flex flex-wrap items-center text-base justify-between  ">
            <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
-            <a className="mr-5 text-xl hover:text-blue-500">Templates</a>
-            <a className="mr-5 text-xl hover:text-blue-500">Components</a>
+           <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Templates</Link>
+           <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Components</Link>
+           
             
           </nav>
         
