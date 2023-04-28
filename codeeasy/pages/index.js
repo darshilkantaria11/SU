@@ -1,9 +1,14 @@
 import React from 'react'
+import Head from 'next/head'
 
 
 const Home = () => {
   return (
     <>
+     <Head>
+        <title>SquareEdits</title>
+        <meta name="description" content="This is my page description." />
+      </Head>
     <div className="bg-gray-100 h-screen">
      <div className="container mx-auto  flex justify-center items-center py-8 ">
       <div className="lg:flex mt-12 lg:justify-between lg:items-center w-full">
