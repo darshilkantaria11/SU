@@ -1,5 +1,6 @@
 import React from 'react'
 import { MdEditSquare } from "react-icons/md";
+import { BsArrowRight } from "react-icons/bs";
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -12,13 +13,17 @@ const Navbar = () => {
             <span className=" text-2xl">SquareEdits</span>
           </a>
           <nav className="md:mr-auto md:ml-20 md:py-1   md:pl-4  text-black- flex flex-wrap items-center text-base justify-between  ">
-           <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
-           <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Templates</Link>
-           <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Components</Link>
-           
-            
+            <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
+            <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Templates</Link>
+            <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Components</Link>
+
+
           </nav>
-        
+          <div class="flex items-center border rounded-full">
+            <input class="py-2 px-3 rounded-full focus:outline-none" type="text" placeholder="Search..."/>
+              <button class=" py-2 px-4 "><BsArrowRight size={30} /></button>
+          </div>
+
         </div>
       </header>
     </div>
