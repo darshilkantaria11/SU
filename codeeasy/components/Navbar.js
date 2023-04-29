@@ -19,9 +19,9 @@ const Navbar = () => {
 
 
           </nav>
-          <div class="flex items-center border rounded-full">
-            <input class="py-2 px-3 rounded-full focus:outline-none" type="text" placeholder="Search..."/>
-              <button class=" py-2 px-4 "><BsArrowRight size={30} /></button>
+          <div className="flex items-center border rounded-full">
+            <input className="py-2 px-3 rounded-full focus:outline-none" type="text" placeholder="Search..."/>
+              <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div>
 
         </div>
