@@ -1,8 +1,9 @@
-import React from 'react'
+
 import { MdEditSquare } from "react-icons/md";
 import { BsArrowRight } from "react-icons/bs";
 import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+
 
 
 const Navbar = () => {
@@ -19,6 +20,28 @@ const Navbar = () => {
     setIsDropdownOpen1(false);
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+
+  const dropdownRef1 = useRef(null);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      
+    
+        setIsDropdownOpen(false);
+        setIsDropdownOpen1(false);
+      
+    };
+  
+    window.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      window.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef, dropdownRef1, isDropdownOpen, isDropdownOpen1]);
+  
+
+
 
 
   return (
@@ -39,7 +62,7 @@ const Navbar = () => {
                 Templates
               </button>
               {isDropdownOpen1 && (
-                <div className="absolute right-0 z-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
+                <div className="absolute  z-10  mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
                   <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
                     Template 1
                   </Link>
@@ -60,7 +83,7 @@ const Navbar = () => {
                 Components
               </button>
               {isDropdownOpen && (
-                <div className="absolute right-0 z-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
+                <div className="absolute  z-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
                   <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
                     Template 1
                   </Link>
