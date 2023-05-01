@@ -6,11 +6,12 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>SquareEdits</title>
+        <title>CodeSquareX</title>
         <meta name="description" content="This is my page description." />
+      
       </Head>
-      <div className="bg-gray-100 h-screen">
-        <div className="container mx-auto  flex justify-center items-center py-8 ">
+      <div className="bg-gray-100  h-screen">
+        <div className="container mx-auto  flex justify-center items-center py-14 ">
           <div className="lg:flex mt-12 lg:justify-between lg:items-center w-full">
             <div className="lg:w-1/2">
               <h1 className="text-6xl font-bold text-gray-900 xl:font-open xl:font-semibold xl:p-6 mb-4 ">
@@ -21,7 +22,7 @@ const Home = () => {
                 solutions and templates today and get started on your website journey!
               </p>
               <div className="flex xl:p-6 ">
-                <Link className="inline-block xl:p-3 xl:pr-8  xl:text-2xl bg-blue-600 hover:bg-blue-700 text-white xl:font-semi-bold py-2 px- rounded-full mt-4 flex items-center" href="/login">
+                <Link className=" xl:pr-12 xl:pl-3   xl:text-2xl bg-blue-600 hover:bg-blue-700 text-white xl:font-semi-bold py-2 px- rounded-full mt-4 flex  items-center" href="/login">
                   Get Started
                   <div className="animate-arrow">&rarr;</div>
                 </Link>
@@ -51,6 +52,8 @@ const Home = () => {
                     animation-delay: 2s;
                   }
                 }
+                 
+
               `}</style>
             </div>
             <div className="lg:w-1/2">

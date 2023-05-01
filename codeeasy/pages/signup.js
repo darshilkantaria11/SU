@@ -7,7 +7,7 @@ function SignUp() {
       <h1 className="text-6xl font-bold mb-3 xl:font-semibold">Sign Up</h1>
       <p className="text-gray-500 mb-4">
         Already have an account?{' '}
-       <Link className="text-blue-500 hover:underline" href={'/login'}>Log In</Link>
+       <Link className="text-bxlue-500 hover:underline" href={'/login'}>Log In</Link>
       </p>
       <form className="w-96 p-6 rounded-lg shadow-lg bg-white mb-6">
         <div className="mb-4">

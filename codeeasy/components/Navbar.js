@@ -11,7 +11,7 @@ const Navbar = () => {
 
   const toggleDropdown1 = () => {
     setIsDropdownOpen(false);
-    setIsDropdownOpen1(!isDropdownOpen1); 
+    setIsDropdownOpen1(!isDropdownOpen1);
   };
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -27,19 +27,19 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      
-    
-        setIsDropdownOpen(false);
-        setIsDropdownOpen1(false);
-      
+
+
+      setIsDropdownOpen(false);
+      setIsDropdownOpen1(false);
+
     };
-  
+
     window.addEventListener("mousedown", handleClickOutside);
     return () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownRef, dropdownRef1, isDropdownOpen, isDropdownOpen1]);
-  
+
 
 
 
@@ -50,7 +50,7 @@ const Navbar = () => {
         <div className="container  flex flex-wrap p-5 flex-col md:flex-row items-center">
           <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <MdEditSquare size={32} />
-            <span className=" text-2xl">SquareEdits</span>
+            <span className=" text-2xl">CodeSquareX</span>
           </a>
           <nav className="md:mr-auto md:ml-20 md:py-1 md:pl-4 text-black- flex flex-wrap items-center text-base justify-between">
             <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
@@ -101,7 +101,10 @@ const Navbar = () => {
             <input className="py-2 px-3 rounded-full focus:outline-none" type="text" placeholder="Search..." />
             <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div> */}
-
+          {/* <div className="flex items-center border border-gray-900 xl:rounded-full ">
+            
+            <Link className="p-2 pl-4 pr-4" href="/login">Log in</Link>
+          </div> */}
         </div>
       </header>
     </div>
