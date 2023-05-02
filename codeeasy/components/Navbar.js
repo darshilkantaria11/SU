@@ -56,7 +56,7 @@ const Navbar = () => {
             <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
             <div className="relative">
               <button
-                className="mr-5 text-xl hover:text-blue-500 focus:outline-none"
+                className="mr-5 text-xl hover:text-blue-500  focus:outline-none"
                 onClick={toggleDropdown1}
               >
                 Templates

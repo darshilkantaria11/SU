@@ -22,7 +22,7 @@ const Home = () => {
                 solutions and templates today and get started on your website journey!
               </p>
               <div className="flex xl:p-6 ">
-                <Link className=" xl:pr-12 xl:pl-3   xl:text-2xl bg-blue-600 hover:bg-blue-700 text-white xl:font-semi-bold py-2 px- rounded-full mt-4 flex  items-center" href="/login">
+                <Link className=" xl:pr-12 xl:pl-3   xl:text-2xl bg-blue-600 hover:bg-blue-700 text-white xl:font-light py-2 px- rounded-full mt-4 flex  items-center" href="/login">
                   Get Started
                   <div className="animate-arrow">&rarr;</div>
                 </Link>
