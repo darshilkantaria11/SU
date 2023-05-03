@@ -1,20 +1,60 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-function Login() {
+const Login = () => {
+
+
+  const router = useRouter()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+
+  const handleChange = (e) => {
+
+    if (e.target.name == 'email') {
+      setEmail(e.target.value)
+    }
+
+
+    else if (e.target.name == 'password') {
+      setPassword(e.target.value)
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const data = { email, password }
+
+    let res = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    let response = await res.json()
+    console.log(response)
+    setEmail('')
+    setPassword('')
+    router.push('/')
+
+  }
+
+
+
   return (
     <div className="flex flex-col justify-center items-center h-screen ">
       <h1 className="text-6xl font-bold mb-3 xl:font-semibold">Log In</h1>
       <p className="text-gray-500 mb-4">
         Don't have an account?{' '}
-        <Link className="text-blue-500 hover:underline" href={'/signup'}>Sign Up</Link>
+        <Link className="text-blue-500 hover:underline" href={'/signuppage'}>Sign Up</Link>
       </p>
-      <form className="w-96 p-6 rounded-lg shadow-lg bg-white mb-6">
+      <form onSubmit={handleSubmit} className="w-96 p-6 rounded-lg shadow-lg bg-white mb-6">
         <div className="mb-4">
           <label className="block font-medium mb-2" htmlFor="email">
             Email
           </label>
-          <input
+          <input  onChange={handleChange}
             className="w-full px-3 py-2 border rounded-lg outline-none focus:shadow-outline"
             type="email"
             name="email"
@@ -26,7 +66,7 @@ function Login() {
           <label className="block font-medium mb-2" htmlFor="password">
             Password
           </label>
-          <input
+          <input onChange={handleChange}
             className="w-full px-3 py-2 border rounded-lg outline-none focus:shadow-outline"
             type="password"
             name="password"
