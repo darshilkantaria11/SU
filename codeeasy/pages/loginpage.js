@@ -36,7 +36,9 @@ const Login = () => {
     console.log(response)
     setEmail('')
     setPassword('')
-    router.push('/')
+    if(response.success){
+      router.push('/')
+    }
 
   }
 

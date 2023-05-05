@@ -22,11 +22,11 @@ const Home = () => {
                 solutions and templates today and get started on your website journey!
               </p>
               <div className="flex flex-col items-center lg:flex-row lg:items-start xl:p-6">
-  <Link className="xl:pr-12 xl:pl-3 xl:text-2xl bg-blue-600 hover:bg-blue-700 text-white xl:font-light py-2 px- rounded-full mt-4 flex items-center" href="/loginpage">
-    Get Started
-    <div className="animate-arrow xl:ml-2">&rarr;</div>
-  </Link>
-  <style jsx>{`
+                <Link className="xl:pr-12 xl:pl-3 xl:text-2xl bg-blue-600 hover:bg-blue-700 text-white xl:font-light py-2 px- rounded-full mt-4 flex items-center" href="/loginpage">
+                  Get Started
+                  <div className="animate-arrow xl:ml-2">&rarr;</div>
+                </Link>
+                <style jsx>{`
     .animate-arrow {
       animation: arrow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
     }
@@ -59,7 +59,7 @@ const Home = () => {
       }
     }
   `}</style>
-</div>
+              </div>
 
 
             </div>
