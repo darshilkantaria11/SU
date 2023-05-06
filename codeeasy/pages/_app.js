@@ -17,16 +17,23 @@ export default function App({ Component, pageProps }) {
       setUser({ value: token }) 
       setKey(Math.random())
     }
+
+    
       
     }, [router.query])
-
+     
+    const logout = () => {
+      localStorage.removeItem("token");
+      setUser({ value: null });
+      setKey(Math.random());
+    };
 
 
   return <>
     <Head>
       <title>SquareEdits</title>
     </Head>
-    <Navbar user={user} key={key}/>
+    <Navbar  user={user} logout={logout} key={key}/>
     <Component {...pageProps} />
     <Footer />
   </>

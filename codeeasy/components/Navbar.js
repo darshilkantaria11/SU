@@ -7,24 +7,36 @@ import { CgUserlane } from "react-icons/cg";
 
 
 
-const Navbar = ({user}) => {
+const Navbar = ({ logout, user }) => {
   const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
 
   const toggleDropdown1 = () => {
     setIsDropdownOpen(false);
+    setIsDropdownOpen2(false);
     setIsDropdownOpen1(!isDropdownOpen1);
   };
+  
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen1(false);
+    setIsDropdownOpen2(false);
     setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
+
+  const toggleDropdown2 = () => {
+    setIsDropdownOpen1(false);
+    setIsDropdownOpen(false);
+    setIsDropdownOpen2(!isDropdownOpen2);
   };
 
 
   const dropdownRef1 = useRef(null);
   const dropdownRef = useRef(null);
+  const dropdownRef2 = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -32,6 +44,7 @@ const Navbar = ({user}) => {
 
       setIsDropdownOpen(false);
       setIsDropdownOpen1(false);
+      setIsDropdownOpen2(false);
 
     };
 
@@ -39,7 +52,8 @@ const Navbar = ({user}) => {
     return () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef, dropdownRef1, isDropdownOpen, isDropdownOpen1]);
+  }, [dropdownRef, dropdownRef1, dropdownRef2, isDropdownOpen, isDropdownOpen2, isDropdownOpen1]);
+
 
 
 
@@ -108,11 +122,32 @@ const Navbar = ({user}) => {
             <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div> */}
           <div className="cursor-pointer cart absolute right-0 top-4 mx-5 flex">
-         {user.value && <CgUserlane size={32}/>}
-         {!user.value && <div className="flex items-center border  border-gray-900 xl:rounded-full ">
-            
-            <Link className="p-2 pl-4 pr-4" href="/loginpage">Log in</Link>
-          </div>}
+            {user.value && <div className="relative">
+              <button
+                className="mr-5 text-xl hover:text-blue-500 focus:outline-none"
+                onClick={toggleDropdown2}
+              >
+                <CgUserlane size={32} />
+              </button>
+              {isDropdownOpen2 && (
+                <div className="absolute right-3 z-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
+                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
+                    My Account
+                  </Link>
+                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
+                    Template 2
+                  </Link>
+                  <button onClick={logout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+            }
+            {!user.value && <div className="flex items-center border  border-gray-900 xl:rounded-full ">
+
+              <Link className="p-2 pl-4 pr-4" href="/loginpage">Log in</Link>
+            </div>}
           </div>
         </div>
       </header>
