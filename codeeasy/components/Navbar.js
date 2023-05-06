@@ -3,10 +3,11 @@ import { MdEditSquare } from "react-icons/md";
 import { BsArrowRight } from "react-icons/bs";
 import Link from 'next/link';
 import React, { useState, useRef, useEffect } from 'react';
+import { CgUserlane } from "react-icons/cg";
 
 
 
-const Navbar = () => {
+const Navbar = ({user}) => {
   const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
 
   const toggleDropdown1 = () => {
@@ -48,11 +49,11 @@ const Navbar = () => {
     <div>
       <header className="text-black-100 body-font border-b">
         <div className="container  flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+          <div className="flex title-font font-medium items-center text-gray-900 mb-4  md:mb-0">
             <MdEditSquare size={32} />
-            <span className=" text-2xl">CodeSquareX</span>
-          </a>
-          <nav className="md:mr-auto md:ml-20 md:py-1 md:pl-4 text-black- flex flex-wrap items-center text-base justify-between">
+            <Link href={'/'}><span className=" text-2xl">CodeSquareX</span></Link>
+          </div>
+          <div className="md:mr-auto md:ml-20 md:py-1 md:pl-4 text-black- flex flex-wrap items-center text-base justify-between">
             <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
             <div className="relative">
               <button
@@ -96,15 +97,23 @@ const Navbar = () => {
                 </div>
               )}
             </div>
-          </nav>
+          </div>
+          {/* <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Button
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button> */}
           {/* <div className="flex items-center border rounded-full">
             <input className="py-2 px-3 rounded-full focus:outline-none" type="text" placeholder="Search..." />
             <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div> */}
-          {/* <div className="flex items-center border border-gray-900 xl:rounded-full ">
+          <div className="cursor-pointer cart absolute right-0 top-4 mx-5 flex">
+         {user.value && <CgUserlane size={32}/>}
+         {!user.value && <div className="flex items-center border  border-gray-900 xl:rounded-full ">
             
-            <Link className="p-2 pl-4 pr-4" href="/login">Log in</Link>
-          </div> */}
+            <Link className="p-2 pl-4 pr-4" href="/loginpage">Log in</Link>
+          </div>}
+          </div>
         </div>
       </header>
     </div>
