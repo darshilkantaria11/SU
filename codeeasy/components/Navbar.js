@@ -4,10 +4,13 @@ import { BsArrowRight } from "react-icons/bs";
 import Link from 'next/link';
 import React, { useState, useRef, useEffect } from 'react';
 import { CgUserlane } from "react-icons/cg";
+import { Button } from "@material-ui/core";
 
 
 
-const Navbar = ({ logout, user }) => {
+const Navbar = ({ user }) => {
+ 
+  
   const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
 
   const toggleDropdown1 = () => {
@@ -15,7 +18,7 @@ const Navbar = ({ logout, user }) => {
     setIsDropdownOpen2(false);
     setIsDropdownOpen1(!isDropdownOpen1);
   };
-  
+
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -121,13 +124,14 @@ const Navbar = ({ logout, user }) => {
             <input className="py-2 px-3 rounded-full focus:outline-none" type="text" placeholder="Search..." />
             <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div> */}
-          <div className="cursor-pointer cart absolute right-0 top-4 mx-5 flex">
-            {user.value && <div className="relative">
+          <div className="cursor-pointer  absolute right-0 top-4 mx-5 flex">
+            {user.value && (<div className="relative">
               <button
                 className="mr-5 text-xl hover:text-blue-500 focus:outline-none"
                 onClick={toggleDropdown2}
               >
-                <CgUserlane size={32} />
+                <CgUserlane size={24} />
+
               </button>
               {isDropdownOpen2 && (
                 <div className="absolute right-3 z-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
@@ -137,13 +141,13 @@ const Navbar = ({ logout, user }) => {
                   <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
                     Template 2
                   </Link>
-                  <button onClick={logout} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" >
+                  {/* <Button variant="contained" color="primary" onClick={logout1}>
                     Logout
-                  </button>
+                  </Button> */}
                 </div>
               )}
             </div>
-            }
+            )}
             {!user.value && <div className="flex items-center border  border-gray-900 xl:rounded-full ">
 
               <Link className="p-2 pl-4 pr-4" href="/loginpage">Log in</Link>

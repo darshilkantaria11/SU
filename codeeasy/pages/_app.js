@@ -12,29 +12,28 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem( 'token')
+    const token = localStorage.getItem('token')
     if (token) {
-      setUser({ value: token }) 
+      setUser({ value: token })
       setKey(Math.random())
     }
+  }, [router.query])
 
-    
-      
-    }, [router.query])
-     
-    const logout = () => {
-      localStorage.removeItem("token");
-      setUser({ value: null });
-      setKey(Math.random());
-    };
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser({ value: null });
+    setKey(Math.random())
+    console.log("hi")
+  };
 
-
-  return <>
-    <Head>
-      <title>SquareEdits</title>
-    </Head>
-    <Navbar  user={user} logout={logout} key={key}/>
-    <Component {...pageProps} />
-    <Footer />
-  </>
+  return (
+    <>
+      <Head>
+        <title>SquareEdits</title>
+      </Head>
+      <Navbar user={user} logout={logout} key={key} />
+      <Component {...pageProps} />
+      <Footer />
+    </>
+  );
 }

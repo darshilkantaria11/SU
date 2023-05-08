@@ -22,7 +22,7 @@ export default function Compiler() {
   return (
     <>
       <Head>
-        <title>HTML CSS Compiler</title>
+        
       </Head>
       <div className="container mx-auto my-4 p-4 rounded-md shadow-lg">
         <div className="grid grid-cols-2 gap-4">
