@@ -9,8 +9,8 @@ import { Button } from "@material-ui/core";
 
 
 const Navbar = ({ user }) => {
- 
-  
+
+
   const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
 
   const toggleDropdown1 = () => {
@@ -80,16 +80,15 @@ const Navbar = ({ user }) => {
                 Templates
               </button>
               {isDropdownOpen1 && (
-                <div className="absolute  z-10  mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    Template 1
+                <div className="absolute  z-10  mt-2 py-4 w-56 bg-white rounded-md shadow-xl">
+                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500 " href="/templates/html&css">
+                    HTML & CSS Templates
                   </Link>
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    Template 2
+
+                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500 " href="#">
+                    Tailwaind CSS Templates
                   </Link>
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    Template 3
-                  </Link>
+
                 </div>
               )}
             </div>
@@ -130,7 +129,7 @@ const Navbar = ({ user }) => {
                 className="mr-5 text-xl hover:text-blue-500 focus:outline-none"
                 onClick={toggleDropdown2}
               >
-                <CgUserlane size={24} />
+                <CgUserlane size={34} />
 
               </button>
               {isDropdownOpen2 && (

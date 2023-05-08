@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useEffect, useState } from "react";
 
 export default function Compiler() {
@@ -21,9 +20,7 @@ export default function Compiler() {
 
   return (
     <>
-      <Head>
-        
-      </Head>
+    
       <div className="container mx-auto my-4 p-4 rounded-md shadow-lg">
         <div className="grid grid-cols-2 gap-4">
           <div>
