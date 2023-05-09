@@ -8,53 +8,14 @@ import { Button } from "@material-ui/core";
 
 
 
-const Navbar = ({ user }) => {
+const Navbar = ({logout, user }) => {
 
   const [dropdown2, setdropdown2] = useState(false)
- 
-
-
-  const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
-
-  const toggleDropdown1 = () => {
-    setIsDropdownOpen(false);
-    setIsDropdownOpen1(!isDropdownOpen1);
-  };
-
-
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen1(false);
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const [dropdown1, setdropdown1] = useState(false)
+  const [dropdown, setdropdown] = useState(false)
 
 
 
-
-  const dropdownRef1 = useRef(null);
-  const dropdownRef = useRef(null);
-
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target) &&
-        dropdownRef1.current &&
-        !dropdownRef1.current.contains(event.target)
-      ) {
-        setIsDropdownOpen(false);
-        setIsDropdownOpen1(false);
-      }
-    };
-
-
-    window.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      window.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [dropdownRef, dropdownRef1, isDropdownOpen, isDropdownOpen1]);
 
 
 
@@ -71,47 +32,28 @@ const Navbar = ({ user }) => {
           </div>
           <div className="md:mr-auto md:ml-20 md:py-1 md:pl-4 text-black- flex flex-wrap items-center text-base justify-between">
             <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
-            <div className="relative">
-              <button
-                className="mr-5 text-xl hover:text-blue-500  focus:outline-none"
-                onClick={toggleDropdown1}
-              >
-                Templates
-              </button>
-              {isDropdownOpen1 && (
-                <div className="absolute  z-10  mt-2 py-4 w-56 bg-white rounded-md shadow-xl">
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500 " href="/templates/html&css">
-                    HTML & CSS Templates
-                  </Link>
 
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:text-blue-500 " href="#">
-                    Tailwaind CSS Templates
-                  </Link>
+            <a onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} >
 
-                </div>
-              )}
-            </div>
-            <div className="relative">
-              <button
-                className="mr-5 text-xl hover:text-blue-500 focus:outline-none"
-                onClick={toggleDropdown}
-              >
-                Components
-              </button>
-              {isDropdownOpen && (
-                <div className="absolute  z-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    Template 1
-                  </Link>
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    Template 2
-                  </Link>
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    Template 3
-                  </Link>
-                </div>
-              )}
-            </div>
+              {dropdown && <div onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} className="  absolute z-10  top-10 mt-2 py-4 w-36 bg-white rounded-md shadow-xl">
+                <ul>
+                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>My Account</li>
+                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>Logout</li>
+                </ul>
+              </div>}
+              <div className="px-4 text-xl"> Templates</div>
+
+            </a>
+            <a onMouseOver={() => { setdropdown1(true) }} onMouseLeave={() => { setdropdown1(false) }} >
+
+              {dropdown1 && <div onMouseOver={() => { setdropdown1(true) }} onMouseLeave={() => { setdropdown1(false) }} className=" absolute z-10 top-10 mt-2 py-4 w-36 bg-white rounded-md shadow-xl">
+                <ul>
+                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>My Account</li>
+                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>Logout</li>
+                </ul>
+              </div>}
+              <div className="px-4 text-xl"> Components</div>
+            </a>
           </div>
           {/* <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Button
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
@@ -123,15 +65,15 @@ const Navbar = ({ user }) => {
             <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div> */}
           <div className="cursor-pointer  absolute right-0 top-4 mx-5 flex">
-          <a onMouseOver={() => {setdropdown2(true)}} onMouseLeave={() => {setdropdown2(false)}} >
-           {dropdown2 && <div onMouseOver={() => {setdropdown2(true)}} onMouseLeave={() => {setdropdown2(false)}} className="absolute right-0  top-8 rounded-sm px-5 w-36 bg-white shadow-xl">
-              <ul>
-                <li className='py-1 hover:text-blue-500 text-sm'>My Account</li>
-                <li className='py-1 hover:text-blue-500 text-sm'>Logout</li>
-              </ul>
-            </div>}
-          
-            {user.value &&  <div className="px-4"> <CgUserlane size={34}  /></div>}
+            <a onMouseOver={() => { setdropdown2(true) }} onMouseLeave={() => { setdropdown2(false) }} >
+              {dropdown2 && <div onMouseOver={() => { setdropdown2(true) }} onMouseLeave={() => { setdropdown2(false) }} className="absolute right-0  top-8 rounded-sm px-5 w-36 bg-white shadow-xl">
+                <ul>
+                  <li className='py-1 hover:text-blue-500 text-sm'>My Account</li>
+                  <li onClick={logout} className='py-1 hover:text-blue-500 text-sm'>Logout</li>
+                </ul>
+              </div>}
+
+              {user.value && <div className="px-4"> <CgUserlane size={34} /></div>}
             </a>
             {!user.value &&
               <div className="flex items-center border  border-gray-900 xl:rounded-full ">

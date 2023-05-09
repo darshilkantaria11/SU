@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 
 const SignUp = () => {
+
+
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      router.push('/')
+    }
+  
+    
+  }, [])
+
+
   const router = useRouter()
 
   const [name, setName] = useState()
