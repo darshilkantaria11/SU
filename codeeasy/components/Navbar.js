@@ -33,27 +33,27 @@ const Navbar = ({logout, user }) => {
           <div className="md:mr-auto md:ml-20 md:py-1 md:pl-4 text-black- flex flex-wrap items-center text-base justify-between">
             <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
 
-            <a onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} >
+            <div onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} >
 
               {dropdown && <div onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} className="  absolute z-10  top-10 mt-2 py-4 w-36 bg-white rounded-md shadow-xl">
                 <ul>
-                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>My Account</li>
-                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>Logout</li>
+                <Link href={'/templates/html&css'}>  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>HTML & CSS Templates</li></Link>
+                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>Tailwaind CSS Templates</li>
                 </ul>
               </div>}
               <div className="px-4 text-xl"> Templates</div>
 
-            </a>
-            <a onMouseOver={() => { setdropdown1(true) }} onMouseLeave={() => { setdropdown1(false) }} >
+            </div>
+            <div onMouseOver={() => { setdropdown1(true) }} onMouseLeave={() => { setdropdown1(false) }} >
 
               {dropdown1 && <div onMouseOver={() => { setdropdown1(true) }} onMouseLeave={() => { setdropdown1(false) }} className=" absolute z-10 top-10 mt-2 py-4 w-36 bg-white rounded-md shadow-xl">
                 <ul>
-                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>My Account</li>
+                  <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>HTML & CSS</li>
                   <li className='block px-4 py-2 text-sm text-gray-700 hover:text-blue-500'>Logout</li>
                 </ul>
               </div>}
               <div className="px-4 text-xl"> Components</div>
-            </a>
+            </div>
           </div>
           {/* <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Button
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
@@ -65,7 +65,7 @@ const Navbar = ({logout, user }) => {
             <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div> */}
           <div className="cursor-pointer  absolute right-0 top-4 mx-5 flex">
-            <a onMouseOver={() => { setdropdown2(true) }} onMouseLeave={() => { setdropdown2(false) }} >
+            <div onMouseOver={() => { setdropdown2(true) }} onMouseLeave={() => { setdropdown2(false) }} >
               {dropdown2 && <div onMouseOver={() => { setdropdown2(true) }} onMouseLeave={() => { setdropdown2(false) }} className="absolute right-0  top-8 rounded-sm px-5 w-36 bg-white shadow-xl">
                 <ul>
                   <li className='py-1 hover:text-blue-500 text-sm'>My Account</li>
@@ -74,7 +74,7 @@ const Navbar = ({logout, user }) => {
               </div>}
 
               {user.value && <div className="px-4"> <CgUserlane size={34} /></div>}
-            </a>
+            </div>
             {!user.value &&
               <div className="flex items-center border  border-gray-900 xl:rounded-full ">
                 <Link className="p-2 pl-4 pr-4" href="/loginpage">Log in</Link>
