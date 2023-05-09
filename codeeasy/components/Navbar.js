@@ -10,12 +10,14 @@ import { Button } from "@material-ui/core";
 
 const Navbar = ({ user }) => {
 
+  const [dropdown2, setdropdown2] = useState(false)
+ 
+
 
   const [isDropdownOpen1, setIsDropdownOpen1] = useState(false);
 
   const toggleDropdown1 = () => {
     setIsDropdownOpen(false);
-    setIsDropdownOpen2(false);
     setIsDropdownOpen1(!isDropdownOpen1);
   };
 
@@ -24,38 +26,35 @@ const Navbar = ({ user }) => {
 
   const toggleDropdown = () => {
     setIsDropdownOpen1(false);
-    setIsDropdownOpen2(false);
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
 
-  const toggleDropdown2 = () => {
-    setIsDropdownOpen1(false);
-    setIsDropdownOpen(false);
-    setIsDropdownOpen2(!isDropdownOpen2);
-  };
 
 
   const dropdownRef1 = useRef(null);
   const dropdownRef = useRef(null);
-  const dropdownRef2 = useRef(null);
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-
-
-      setIsDropdownOpen(false);
-      setIsDropdownOpen1(false);
-      setIsDropdownOpen2(false);
-
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        dropdownRef1.current &&
+        !dropdownRef1.current.contains(event.target)
+      ) {
+        setIsDropdownOpen(false);
+        setIsDropdownOpen1(false);
+      }
     };
+
 
     window.addEventListener("mousedown", handleClickOutside);
     return () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [dropdownRef, dropdownRef1, dropdownRef2, isDropdownOpen, isDropdownOpen2, isDropdownOpen1]);
+  }, [dropdownRef, dropdownRef1, isDropdownOpen, isDropdownOpen1]);
 
 
 
@@ -124,33 +123,21 @@ const Navbar = ({ user }) => {
             <button className=" py-2 px-4 "><BsArrowRight size={30} /></button>
           </div> */}
           <div className="cursor-pointer  absolute right-0 top-4 mx-5 flex">
-            {user.value && (<div className="relative">
-              <button
-                className="mr-5 text-xl hover:text-blue-500 focus:outline-none"
-                onClick={toggleDropdown2}
-              >
-                <CgUserlane size={34} />
-
-              </button>
-              {isDropdownOpen2 && (
-                <div className="absolute right-3 z-10 mt-2 py-2 w-48 bg-white rounded-md shadow-xl">
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    My Account
-                  </Link>
-                  <Link className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">
-                    Template 2
-                  </Link>
-                  {/* <Button variant="contained" color="primary" onClick={logout1}>
-                    Logout
-                  </Button> */}
-                </div>
-              )}
-            </div>
-            )}
-            {!user.value && <div className="flex items-center border  border-gray-900 xl:rounded-full ">
-
-              <Link className="p-2 pl-4 pr-4" href="/loginpage">Log in</Link>
+          <a onMouseOver={() => {setdropdown2(true)}} onMouseLeave={() => {setdropdown2(false)}} >
+           {dropdown2 && <div onMouseOver={() => {setdropdown2(true)}} onMouseLeave={() => {setdropdown2(false)}} className="absolute right-0  top-8 rounded-sm px-5 w-36 bg-white shadow-xl">
+              <ul>
+                <li className='py-1 hover:text-blue-500 text-sm'>My Account</li>
+                <li className='py-1 hover:text-blue-500 text-sm'>Logout</li>
+              </ul>
             </div>}
+          
+            {user.value &&  <div className="px-4"> <CgUserlane size={34}  /></div>}
+            </a>
+            {!user.value &&
+              <div className="flex items-center border  border-gray-900 xl:rounded-full ">
+                <Link className="p-2 pl-4 pr-4" href="/loginpage">Log in</Link>
+              </div>}
+
           </div>
         </div>
       </header>
