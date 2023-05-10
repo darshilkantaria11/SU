@@ -1,6 +1,6 @@
 import React from 'react'
 
-const hcteamplates = () => {
+const teamplates = () => {
   return (
     <>
       <section className="text-gray-600 body-font">
@@ -77,4 +77,4 @@ const hcteamplates = () => {
   )
 }
 
-export default hcteamplates
+export default teamplates

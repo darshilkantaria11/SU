@@ -32,8 +32,9 @@ const Navbar = ({logout, user }) => {
           </div>
           <div className="md:mr-auto md:ml-20 md:py-1 md:pl-4 text-black- flex flex-wrap items-center text-base justify-between">
             <Link className="mr-5 text-xl hover:text-blue-500 " href={'/'}> Home</Link>
+            <Link className="mr-5 text-xl hover:text-blue-500 " href={'/templates'}> Templates</Link>
 
-            <div onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} >
+            {/* <div onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} >
 
               {dropdown && <div onMouseOver={() => { setdropdown(true) }} onMouseLeave={() => { setdropdown(false) }} className="  absolute z-10  top-10 mt-2 py-4 w-36 bg-white rounded-md shadow-xl">
                 <ul>
@@ -43,7 +44,7 @@ const Navbar = ({logout, user }) => {
               </div>}
               <div className="px-4 text-xl"> Templates</div>
 
-            </div>
+            </div> */}
             <div onMouseOver={() => { setdropdown1(true) }} onMouseLeave={() => { setdropdown1(false) }} >
 
               {dropdown1 && <div onMouseOver={() => { setdropdown1(true) }} onMouseLeave={() => { setdropdown1(false) }} className=" absolute z-10 top-10 mt-2 py-4 w-36 bg-white rounded-md shadow-xl">
