@@ -94,7 +94,7 @@ const Login = () => {
         </button>
 
       </form>
-      <div className="flex w-96 justify-between">
+      {/* <div className="flex w-96 justify-between">
         <hr className="w-1/3" />
         <p className="text-gray-500 mx-2">OR</p>
         <hr className="w-1/3" />
@@ -108,7 +108,7 @@ const Login = () => {
           alt="Google logo"
         />
         Log in with Google
-      </button>
+      </button> */}
 
     </div>
   )
