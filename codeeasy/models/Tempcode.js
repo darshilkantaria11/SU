@@ -6,5 +6,5 @@ const TempcodeSchema = new mongoose.Schema({
     code: {type: String, require: true} // Add code field
 }, {timestamps: true});
 
-const Tempcode = mongoose.models.User || mongoose.model("Tempcode", TempcodeSchema);
+const Tempcode = mongoose.models.Tempcode || mongoose.model("Tempcode", TempcodeSchema);
 export default Tempcode;
