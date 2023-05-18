@@ -1,99 +1,61 @@
-import { useState } from 'react';
-import React from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const MyForm = () => {
+const UploadPage = () => {
   const [title, setTitle] = useState('');
-  const [htmlCode, setHtmlCode] = useState('');  
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const handleHtmlCodeChange = (e) => {
-    setHtmlCode(e.target.value);
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(file);
-  };
+  const [code, setCode] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const data = { title, htmlCode };
+    try {
+      const response = await axios.post('/api/addtempcode', {
+        title,
+        code,
+      });
 
+      console.log(response.data);
 
-    let res = await fetch('/api/addtempcode', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    let response = await res.json()
-    console.log(response)
-    setTitle('')
-    setHtmlCode('')
-    setSelectedImage(null);
-
-
-
-
-    // Perform your form submission logic here
-    // You can access the title, htmlCode, and selectedImage states for further processing
+      // Reset form fields after successful submission
+      setTitle('');
+      setCode('');
+    } catch (error) {
+      console.error('Error:', error.response.data);
+    }
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Create a New Post</h1>
+    <div className="flex flex-col items-center mt-8">
+      <h1 className="text-3xl font-bold mb-4">Upload Data</h1>
+      <form onSubmit={handleSubmit} className="max-w-md w-full bg-white p-6 rounded-lg shadow-md">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="title">
+          <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">
             Title
           </label>
           <input
             type="text"
             id="title"
             name="title"
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-blue-300"
             value={title}
-            onChange={handleTitleChange}
+            onChange={(e) => setTitle(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="htmlCode">
-            HTML Code
+          <label htmlFor="code" className="block text-gray-700 text-sm font-bold mb-2">
+            Code
           </label>
           <textarea
-            id="htmlCode"
-            name="htmlCode"
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-blue-300"
-            value={htmlCode}
-            onChange={handleHtmlCodeChange}
-          ></textarea>
-
-        </div>
-        <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="image">
-            Image
-          </label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            className="mb-2"
-            onChange={handleImageChange}
+            id="code"
+            name="code"
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            className="w-full h-40 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300 resize-none"
           />
-          {selectedImage && (
-            <img src={URL.createObjectURL(selectedImage)} alt="Selected" className="max-w-xs mb-2" />
-          )}
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition-colors duration-300"
         >
           Submit
         </button>
@@ -102,4 +64,4 @@ const MyForm = () => {
   );
 };
 
-export default MyForm;
+export default UploadPage;

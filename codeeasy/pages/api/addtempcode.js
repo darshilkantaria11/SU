@@ -1,17 +1,20 @@
-import connectDb from "../../middleware/mongoose";
-import Tempcode from "../../models/Tempcode";
+import Tempcode from "../../models/Tempcode"
+import connectDb from "../../middleware/mongoose"
+
 
 const handler = async (req, res) => {
     if (req.method == 'POST') {
 
         const { title, code } = req.body
-         let t = new Tempcode({title, code})
-       
-         await t.save()
-         res.status(200).json({ success: "success" })
+        let u = new Tempcode({ title, code })
+
+
+        await u.save()
+
+        res.status(200).json({ success: "success" })
     }
     else {
-        res.status(400).json({ error: "this method is not allowed" })
+        res.status(400).json({ error: "This method is not allowed" })
     }
 
 }
