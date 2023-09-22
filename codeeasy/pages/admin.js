@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+// ... other imports
+
 const UploadPage = () => {
   const [title, setTitle] = useState('');
   const [code, setCode] = useState('');
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    setImage(file);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('/api/addtempcode', {
-        title,
-        code,
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('code', code);
+      formData.append('image', image);
+
+      const response = await axios.post('/api/addtempcode', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
       });
 
       console.log(response.data);
@@ -19,8 +33,9 @@ const UploadPage = () => {
       // Reset form fields after successful submission
       setTitle('');
       setCode('');
+      setImage(null);
     } catch (error) {
-      console.error('Error:', error.response.data);
+      console.error('Error:', error.response ? error.response.data : error.message);
     }
   };
 
@@ -51,6 +66,19 @@ const UploadPage = () => {
             value={code}
             onChange={(e) => setCode(e.target.value)}
             className="w-full h-40 px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300 resize-none"
+          />
+        </div>
+        <div className="mb-4">
+          <label htmlFor="image" className="block text-gray-700 text-sm font-bold mb-2">
+            Image
+          </label>
+          <input
+            type="file"
+            accept="image/*"
+            id="image"
+            name="image"
+            onChange={handleImageChange}
+            className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring focus:ring-blue-300"
           />
         </div>
         <button

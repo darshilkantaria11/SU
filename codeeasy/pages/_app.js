@@ -29,7 +29,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>SquareEdits</title>
+        <title>CodeSquareX</title>
       </Head>
       <Navbar user={user} logout={logout} key={key} />
       <Component {...pageProps} />
